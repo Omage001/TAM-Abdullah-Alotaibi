@@ -747,12 +747,7 @@ This project is licensed under the MIT License.
 
 ---
 
-## 📞 Support
 
-For issues and questions:
-- Open an issue on GitHub
-- Check [SENDGRID.md](./SENDGRID.md) for email setup
-- Check [DOCKER.md](./DOCKER.md) for Docker deployment
 
 ---
 
