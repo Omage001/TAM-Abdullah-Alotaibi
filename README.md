@@ -20,6 +20,7 @@ A secure, full-featured task management system with role-based access control, d
 - [API Documentation](#api-documentation)
 - [Email Notifications](#email-notifications)
 - [Admin Panel](#admin-panel)
+- [CI/CD Pipeline](#cicd-pipeline)
 - [Usage Guide](#usage-guide)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
@@ -433,6 +434,76 @@ Use the sort dropdown to sort by:
 2. Find task in Tasks table
 3. Click **"Delete"** button
 4. Confirm deletion
+
+---
+
+## 🚀 CI/CD Pipeline
+
+This project includes automated CI/CD workflows using GitHub Actions.
+
+### Workflows
+
+**1. CI/CD Pipeline** (`.github/workflows/ci-cd.yml`)
+- ✅ Build and test application
+- ✅ Security scanning (npm audit + Trivy)
+- ✅ Docker image build and push
+- ✅ Automated deployment
+
+**2. Code Quality** (`.github/workflows/code-quality.yml`)
+- ✅ ESLint analysis
+- ✅ TypeScript type checking
+- ✅ Prettier formatting
+- ✅ Secret scanning
+
+**3. Dependency Updates** (`.github/workflows/dependency-update.yml`)
+- ✅ Weekly automated updates
+- ✅ Security patch automation
+- ✅ Auto-creates pull requests
+
+### Setup CI/CD
+
+**1. Add GitHub Secrets:**
+
+Go to: `Repository → Settings → Secrets and variables → Actions`
+
+Add these secrets:
+- `DOCKER_USERNAME`: Your Docker Hub username (e.g., abdullah0100)
+- `DOCKER_PASSWORD`: Docker Hub access token
+
+**2. Create Docker Hub Token:**
+```bash
+1. Visit: https://hub.docker.com/settings/security
+2. Click "New Access Token"
+3. Name: github-actions
+4. Permissions: Read & Write
+5. Copy token and add to GitHub Secrets
+```
+
+**3. Pipeline Triggers:**
+- **Push to main/develop** → Full pipeline runs
+- **Pull requests** → Build + tests only
+- **Weekly schedule** → Dependency updates
+
+### Pipeline Status
+
+Check workflow runs in the **Actions** tab of your repository.
+
+### Manual Deployment
+
+Trigger deployment manually:
+```bash
+Repository → Actions → CI/CD Pipeline → Run workflow
+```
+
+### Docker Image
+
+After successful pipeline run, pull the latest image:
+```bash
+docker pull abdullah0100/task-manager:latest
+docker-compose pull && docker-compose up -d
+```
+
+For complete CI/CD documentation, see [.github/CI-CD.md](.github/CI-CD.md)
 
 ---
 
