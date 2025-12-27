@@ -50,6 +50,7 @@ export function TaskDialog({
       description: "",
       priority: "medium",
       status: "pending",
+      deadline: undefined,
     },
   });
 
@@ -57,11 +58,17 @@ export function TaskDialog({
   useEffect(() => {
     if (open) {
       if (initialData) {
+        // Convert Date to datetime-local string format
+        const deadlineValue = initialData.deadline 
+          ? new Date(initialData.deadline).toISOString().slice(0, 16)
+          : "";
+        
         form.reset({
           title: initialData.title,
           description: initialData.description || "",
           priority: initialData.priority,
           status: initialData.status,
+          deadline: deadlineValue,
         });
       } else {
         form.reset({
@@ -69,6 +76,7 @@ export function TaskDialog({
           description: "",
           priority: "medium",
           status: "pending",
+          deadline: "",
         });
       }
     }
@@ -111,6 +119,29 @@ export function TaskDialog({
                       className="resize-none min-h-[100px]" 
                       {...field}
                       value={field.value || ""} 
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="deadline"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Deadline (Optional)</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="datetime-local" 
+                      {...field}
+                      value={field.value || ""}
+                      onChange={(e) => {
+                        // Convert datetime-local string to Date or null
+                        const value = e.target.value ? new Date(e.target.value) : null;
+                        field.onChange(value);
+                      }}
                     />
                   </FormControl>
                   <FormMessage />
