@@ -4,14 +4,14 @@
 
 ### Complete System Architecture Diagram
 
-**Google Drive Link:** [Task Manager System Architecture Diagram](https://drive.google.com/drive/folders/1GvnMF6LOk9O6JAPBRtAGWlYr_7fQf7ul?usp=sharing)
+![Task Manager System Architecture](./Task-Manager-System-Architecture-Diagram.png)
 
-This folder contains comprehensive visual diagrams for the Task Manager application including:
+This diagram shows comprehensive visual overview of the Task Manager application including:
 
-- **System Architecture Diagram** - Complete overview of all system components
-- **Database ERD** - Entity Relationship Diagram for PostgreSQL database
-- **CI/CD Pipeline** - Workflow visualization
-- **Authentication Flow** - User login and registration process
+- **System Architecture** - Complete overview of all system components
+- **Component Layers** - Frontend, Backend, Database, and External Services
+- **Data Flow** - How information moves through the system
+- **Technology Stack** - All technologies used in the application
 - **Deployment Architecture** - Docker container setup
 
 ---
